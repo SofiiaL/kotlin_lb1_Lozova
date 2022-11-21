@@ -1,0 +1,47 @@
+class Person(){
+    var name : String = "John"
+    var surname : String = "Doe"
+    var age : Int = 1
+    	set(value){
+            if(value < 0){
+                println("Спроба встановити недійсний вік, автоматично було встановлено 12 років")
+                field = 12
+            }else{
+                field = value
+            }
+        }
+    
+    constructor(_name : String) : this(){
+        name = _name
+    }
+    constructor(_name : String, _surname : String) : this(_name){
+        surname = _surname
+    }
+    constructor(_name : String, _surname : String, _age : Int) : this(_name,_surname){
+        if(_age < 0){
+            println("Спроба встановити недійсний вік, автоматично було встановлено 12 років")
+            age = 12
+        }else{
+            age = _age
+        }
+        
+    }
+    
+    override fun toString(): String = "$name $surname, $age y.o"
+}
+
+fun main() {
+    val john : Person = Person()
+    println(john)
+    val peter : Person = Person("Peter")
+    println(peter)
+    var steve : Person = Person("Steve", "Cawton", -8)
+    println(steve)
+    steve.name = "Garry"
+    steve.surname = "Lee"
+    steve.age = -100
+    println(steve)
+    steve.age = 58
+    println(steve)
+    
+}
